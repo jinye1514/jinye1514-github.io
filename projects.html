@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Robotics Graduate Student</title>
+    <style>
+        body {
+            font-family: "Courier", monospace;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #f8f8f8;
+        }
+        header {
+            background-color: #e0e0e0;
+            text-align: center;
+            padding: 1rem;
+            border: 2px solid #333;
+        }
+        nav {
+            margin-top: 1rem;
+        }
+        nav a {
+            margin: 0 10px;
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px dashed #333;
+        }
+        section {
+            margin-top: 2rem;
+            background-color: #fff;
+            padding: 1rem;
+            border: 1px solid #ccc;
+        }
+        h1 {
+            color: #444;
+            font-weight: normal;
+        }
+        h2 {
+            color: #444;
+            font-weight: bold;
+            margin: 0;
+        }
+        h3 {
+            color: #444;
+            font-weight: normal;
+            margin-top: 0rem;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        li:before {
+            content: "- ";
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ye Jin (Andy)</h1>
+        <p>Graduate Student at Carnegie Mellon University</p>
+        <nav>
+            <a href="index.html#about">About</a>
+            <a href="index.html#cv">CV</a>
+            <a href="#projects">Projects</a>
+        </nav>
+    </header>
+
+    <section id="on-orbit">
+        <h1>My Projects</h1>
+        <h2>On-orbit Manipulation</h2>
+        <h3>Northrop Grumman Corporation </h3>
+        <p align="right">May 2024 - Current</p>
+        <p>
+            Every year, hundreds to thousands of satellites are launched into space. However, once these satellites are launched, 
+            they have limited fuel in their attitude control systems and they become effectively defunct when its fuel runs out, losing any orbital control capabilities. 
+        </p>
+        <p>
+            In response to this challenge, Northrop Grumman (NG) has developed the Mission Extension Pod (MEP), a 'piggyback' satellite that can dock with a defunct satellite,
+            and provide orbital control capabilities to extend the satellite's operational life. The MEP docks with the client satellite by inserting a probe into 
+            the Liquid Apogee Engine (LAE) nozzle of the client satellite. Along with the Mission Robotic Vehicle (MRV), 
+            which is equipped with a 7-DOF robotic arm. NG has shown initial success in capturing relatively stationary client satellites.
+        </p>
+        <p>
+           Carnegie Mellon University's Biorobotics Lab is collaborating with NG to develop the MRV's control system to further improve their capabilities to capture tumbling client satellites.
+            Specifically, as the client satellite tumbles, contact becomes unavoidable between the probe and the nozzle. Because contact dynamics are highly nonlinear, and difficult to model,
+            our team has developed a hardware emulator named Holodeck to generate real contact data to be used for evaluating the control system of the MRV in simulated space environment.
+        </p>
+        <p>
+            Over the summer of 2024, I have been working extensively on the Holodeck project. I have been a key contributor to our custom ROS interface for syncronous control of the 28 DOF of the Holodeck emulator,
+            and I have spearheaded the development of the emulator software to convert insertion simulation motion to real hardware motion of the Holodeck. In addition, I have created demonstrations of the Holodeck for the NG team, and 
+            for CMU faculty and students.
+        </p>
+
+    </section>
+
+    <section id="ajam">
+        <h2>Project 2: [Project Name]</h2>
+        <p>[Brief description of the project]</p>
+        <img src="/api/placeholder/400/300" alt="Project 2 Image">
+        <p>
+            <a href="#">View Project Details</a> |
+            <a href="#">Watch Project Video</a>
+        </p>
+    </section>
+
+
+
+    <footer>
+        <p>© 2024 Your Name. Hosted on GitHub Pages.</p>
+    </footer>
+</body>
+</html>
+</html>
