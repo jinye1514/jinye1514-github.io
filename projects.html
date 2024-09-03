@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Robotics Graduate Student</title>
+    <title>Ye Jin - Projects</title>
     <style>
         body {
             font-family: "Courier", monospace;
@@ -49,12 +49,24 @@
             font-weight: normal;
             margin-top: 0rem;
         }
+        h4 {
+            color: #444;
+            font-weight: bold;
+        }
         ul {
             list-style-type: none;
             padding-left: 0;
         }
         li:before {
             content: "- ";
+        }
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        figure figcaption {
+            text-align: center;
         }
     </style>
 </head>
@@ -86,6 +98,13 @@
                 the Liquid Apogee Engine (LAE) nozzle of the client satellite. Along with the Mission Robotic Vehicle (MRV), 
                 which is equipped with a 7-DOF robotic arm, NG has shown initial success in capturing relatively stationary client satellites.
             </p>
+            <figure>
+                <img src="/resources/ng_annotated.png" alt="MEP docking with client satellite" width=90% class="center">
+                <figcaption>
+                    source: NG
+                    (<a href="https://www.youtube.com/watch?v=hieqTEaEBQo" target="_blank" >Full Video</a>)
+                </figcaption>
+            </figure>
             <p>
                Carnegie Mellon University's Biorobotics Lab is collaborating with NG to develop the MRV's control system to further improve their capabilities to capture tumbling client satellites.
                 Specifically, as the client satellite tumbles, contact becomes unavoidable between the probe and the nozzle. Because contact dynamics are highly nonlinear, and difficult to model,
@@ -98,6 +117,41 @@
                 and I have spearheaded the development of the emulator software to convert insertion simulation motion to real hardware motion of the Holodeck. In addition, I have created demonstrations of the Holodeck for the NG team, and 
                 for CMU faculty and students.
             </p>
+            <h4>Holodeck Hardware</h4>
+            <img src="/resources/holodeck_birdseye.jpg" alt="Holodeck" width=80% class="center">
+            <p>
+                the Holodeck is a hardware-in-the-loop test platform that can emulate the dynamics of the MEP and the client satellite in a simulated space environment.
+                The Holodeck is equipped with 4 UR10e robotic arms, each mounted on a Vention linear rail system, allowing 7 degrees of freedom per arm/rail combination.
+            </p>
+            <h4>Holodeck Control Interface</h4>
+            <img src="/resources/holodeck_control_flowchart.png" alt="Holodeck Interface" width=100% class="center">
+            <p>
+                The Holodeck control interface is a custom ROS package that allows for synchronous control of the total 28 DOF of the Holodeck emulator. 
+                The interface is designed to take high level commands from the user, the space environment simulator in this case, and convert them to low level commands for the Holodeck hardware.
+                The specific commands depend on the control mode, specified by the user.
+            </p>
+            <p>
+                Both the Arm and Carriage nodes are organized as state machines, with each state corresponding to a specific control mode. The state machines are designed to be modular,
+                allowing for easy addition of new control modes. The state machines are also designed to be robust, with error handling and recovery mechanisms in place.
+            </p>
+            <figure>
+                <img src="/resources/holodeck_state_machine_diagram.png" alt="State Machine Diagram" width=100% class="center">
+                <figcaption>
+                    Note: dashed lines indicate the 'stop' service call that will stop current motion and reset the state machine to the 'idle' state.
+                </figcaption>
+            </figure>
+            <h4>Space Gravity Demo</h4>
+
+            <h4>MEP-Client Docking Demo</h4>
+            <video width="100%" controls class="center">
+                <source src="/resources/zoomed_out_holo_insertion_edited.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video width="100%" controls class="center">
+                <source src="/resources/sim_hil_holodeck.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            
         </div>
     </section>
 
