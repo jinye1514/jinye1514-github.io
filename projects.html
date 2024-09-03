@@ -18,7 +18,7 @@
             background-color: #e0e0e0;
             text-align: center;
             padding: 1rem;
-            border: 2px solid #333;
+            border: 1px solid #333;
         }
         nav {
             margin-top: 1rem;
@@ -72,29 +72,33 @@
     <section id="on-orbit">
         <h1>My Projects</h1>
         <h2>On-orbit Manipulation</h2>
-        <h3>Northrop Grumman Corporation </h3>
+        <h3>Northrop Grumman Corporation</h3>
         <p align="right">May 2024 - Current</p>
-        <p>
-            Every year, hundreds to thousands of satellites are launched into space. However, once these satellites are launched, 
-            they have limited fuel in their attitude control systems and they become effectively defunct when its fuel runs out, losing any orbital control capabilities. 
-        </p>
-        <p>
-            In response to this challenge, Northrop Grumman (NG) has developed the Mission Extension Pod (MEP), a 'piggyback' satellite that can dock with a defunct satellite,
-            and provide orbital control capabilities to extend the satellite's operational life. The MEP docks with the client satellite by inserting a probe into 
-            the Liquid Apogee Engine (LAE) nozzle of the client satellite. Along with the Mission Robotic Vehicle (MRV), 
-            which is equipped with a 7-DOF robotic arm. NG has shown initial success in capturing relatively stationary client satellites.
-        </p>
-        <p>
-           Carnegie Mellon University's Biorobotics Lab is collaborating with NG to develop the MRV's control system to further improve their capabilities to capture tumbling client satellites.
-            Specifically, as the client satellite tumbles, contact becomes unavoidable between the probe and the nozzle. Because contact dynamics are highly nonlinear, and difficult to model,
-            our team has developed a hardware emulator named Holodeck to generate real contact data to be used for evaluating the control system of the MRV in simulated space environment.
-        </p>
-        <p>
-            Over the summer of 2024, I have been working extensively on the Holodeck project. I have been a key contributor to our custom ROS interface for syncronous control of the 28 DOF of the Holodeck emulator,
-            and I have spearheaded the development of the emulator software to convert insertion simulation motion to real hardware motion of the Holodeck. In addition, I have created demonstrations of the Holodeck for the NG team, and 
-            for CMU faculty and students.
-        </p>
-
+        <button id="collapseButton" onclick="toggleCollapse()">▼ Project Background  </button> <br>
+        <div id="collapseContent" style="display:none;">
+            <p>
+                Every year, hundreds to thousands of satellites are launched into space. However, once these satellites are launched, 
+                they have limited fuel in their attitude control systems and they become effectively defunct when its fuel runs out, losing any orbital control capabilities. 
+            </p>
+            <p>
+                In response to this challenge, Northrop Grumman (NG) has developed the Mission Extension Pod (MEP), a 'piggyback' satellite that can dock with a defunct satellite,
+                and provide orbital control capabilities to extend the satellite's operational life. The MEP docks with the client satellite by inserting a probe into 
+                the Liquid Apogee Engine (LAE) nozzle of the client satellite. Along with the Mission Robotic Vehicle (MRV), 
+                which is equipped with a 7-DOF robotic arm, NG has shown initial success in capturing relatively stationary client satellites.
+            </p>
+            <p>
+               Carnegie Mellon University's Biorobotics Lab is collaborating with NG to develop the MRV's control system to further improve their capabilities to capture tumbling client satellites.
+                Specifically, as the client satellite tumbles, contact becomes unavoidable between the probe and the nozzle. Because contact dynamics are highly nonlinear, and difficult to model,
+                our team has developed a hardware emulator named Holodeck to generate real contact data to be used for evaluating the control system of the MRV in a simulated space environment.
+            </p>
+        </div>
+        <div id="contributions">personal contributions</div>
+            <p>
+                Over the summer of 2024, I have been working extensively on the Holodeck project. I have been a key contributor to our custom ROS interface for synchronous control of the 28 DOF of the Holodeck emulator,
+                and I have spearheaded the development of the emulator software to convert insertion simulation motion to real hardware motion of the Holodeck. In addition, I have created demonstrations of the Holodeck for the NG team, and 
+                for CMU faculty and students.
+            </p>
+        </div>
     </section>
 
     <section id="ajam">
@@ -108,6 +112,42 @@
     </section>
 
 
+    <script>
+        function toggleCollapse() {
+            var content = document.getElementById("collapseContent");
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+
+    <style>
+        #collapseButton, #contributions {
+            background-color: #e0e0e0;
+            color: #333;
+            border: 0px;
+            padding: 0.5rem 1rem;
+            font-family: "Courier", monospace;
+            font-size: 1rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin-top: 1rem;
+            display: inline-block;
+            text-align: center; /* Ensures text is centered */
+            line-height: 1rem;  /* Matches the height of the text */
+            /* width: 200px; */
+        }
+
+        #collapseButton:hover {
+            background-color: #ccc;
+        }
+
+        #nonClickableBox {
+            cursor: default;
+        }
+    </style>
 
     <footer>
         <p>© 2024 Your Name. Hosted on GitHub Pages.</p>
