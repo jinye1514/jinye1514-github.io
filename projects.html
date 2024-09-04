@@ -91,8 +91,16 @@
         </nav>
     </header>
 
-    <section id="on-orbit">
+    <section id="table of content">
         <h1>My Projects</h1>
+        <ul>
+            <li><a href="#on-orbit">NG: On-orbit Manipulation</a></li>
+            <li><a href="#eigenbot">EigenBot</a></li>
+            <li><a href="#ajam">MFI: Aerosol Jet Additive Manufacturing</a></li>
+        </ul>
+    </section>
+        
+    <section id="on-orbit">
         <h2>On-orbit Manipulation</h2>
         <h3>Northrop Grumman Corporation</h3>
         <p align="right">May 2024 - Current</p>
@@ -102,12 +110,6 @@
                 Every year, hundreds to thousands of satellites are launched into space. However, once these satellites are launched, 
                 they have limited fuel in their attitude control systems and they become effectively defunct when its fuel runs out, losing any orbital control capabilities. 
             </p>
-            <p>
-                In response to this challenge, Northrop Grumman (NG) has developed the Mission Extension Pod (MEP), a 'piggyback' satellite that can dock with a defunct satellite,
-                and provide orbital control capabilities to extend the satellite's operational life. The MEP docks with the client satellite by inserting a probe into 
-                the Liquid Apogee Engine (LAE) nozzle of the client satellite. Along with the Mission Robotic Vehicle (MRV), 
-                which is equipped with a 7-DOF robotic arm, NG has shown initial success in capturing relatively stationary client satellites.
-            </p>
             <figure>
                 <img src="/resources/ng_annotated.png" alt="MEP docking with client satellite" width=90% class="center">
                 <figcaption>
@@ -115,6 +117,19 @@
                     (<a href="https://www.youtube.com/watch?v=hieqTEaEBQo" target="_blank" >Full Video</a>)
                 </figcaption>
             </figure>
+            <p>
+                In response to this challenge, Northrop Grumman (NG) has developed the Mission Extension Pod (MEP), a 'piggyback' satellite that can dock with a defunct satellite,
+                and provide orbital control capabilities to extend the satellite's operational life. The MEP docks with the client satellite by inserting a probe into 
+                the Liquid Apogee Engine (LAE) nozzle of the client satellite. Along with the Mission Robotic Vehicle (MRV), 
+                which is equipped with a 7-DOF robotic arm, NG has shown initial success in capturing relatively stationary client satellites.
+            </p>
+            <figure>
+                <img src="/resources/insertion_simplified.png" alt="Simplified depiction of insertion" width=90% class="center">
+                <figcaption>
+                    Note: A simplified depiction of the insertion process. The MEP body is not shown.
+                </figcaption>
+            </figure>
+
             <p>
                Carnegie Mellon University's Biorobotics Lab is collaborating with NG to develop the MRV's control system to further improve their capabilities to capture tumbling client satellites.
                 Specifically, as the client satellite tumbles, contact becomes unavoidable between the probe and the nozzle. Because contact dynamics are highly nonlinear, and difficult to model,
@@ -137,7 +152,7 @@
             <img src="/resources/holodeck_control_flowchart.png" alt="Holodeck Interface" width=100% class="center">
             <p>
                 The Holodeck control interface is a custom ROS package that allows for synchronous control of the total 28 DOF of the Holodeck emulator. 
-                The interface is designed to take high level commands from the user, the space environment simulator in this case, and convert them to low level commands for the Holodeck hardware.
+                The interface is designed to take high level commands from the user, the MRV-Client simulator in this case, and convert them to low level commands for the Holodeck hardware.
                 The specific commands depend on the control mode, specified by the user.
             </p>
             <p>
@@ -151,18 +166,49 @@
                 </figcaption>
             </figure>
             <h4>Space Gravity Demo</h4>
-
-            <h4>MEP-Client Docking Demo</h4>
-            <video width="100%" controls class="center">
+            <video width="90%" controls class="center">
+                <source src="/resources/ball_demo.mp4" type="video/mp4">
+            </video>
+            <p>
+                The video above shows the Holodeck in action, emulating the dynamics of a ball in two simulated environments: space and water. During the first half of the video, the ball is in space without any gravity. 
+                When the ball is disburbed by an external force, the force torque sensor on the end effector of the arm detects the disturbance and passes the contact data to the simulation, which responds by moving the ball accordingly.
+                Similarly, during the second half of the video, the ball is in water, but the gravity is set to be the same as on Earth. The ball, having a simulated density of 0.9 g/cm^3, floats on a simulated water surface and can be pushed down,
+                or lifted up above the water surface by external forces. The ball positions are passed from simulation and converted into end effector poses and passed to the Holodeck Control Interface to be converted into motion.
+            </p>
+            <h4>MRV-Client Docking Demo</h4>
+            <p>
+                The following videos show the Holodeck emulating the MRV-Client docking process. The simulator contains a simulated space environment, with the MRV, MEP, and client satellite models. 
+                During each step of the simulation, the simulator node publishes the resultant motion of the probe and nozzle poses through ROS in real time. The poses are then converted into the corresponding 
+                joint velocities for each arm of the Holodeck using resolved rate control and passed to the Holodeck Control Interface to be converted into motion.
+            </p>
+            <video width="90%" controls class="center">
                 <source src="/resources/zoomed_out_holo_insertion_edited.mp4" type="video/mp4">
-                Your browser does not support the video tag.
             </video>
-            <video width="100%" controls class="center">
+            <p>
+                The video above shows the full zoomed out view of the MRV-Client docking process, and the following video shows a zoomed in and side by side view of the probe-nozzle insertion process with the software simulation.
+                For this demo, the client satellite is experiencing a non-zero initial angular velocity and can experienced contact with the probe during insertion.
+            </p>
+            <figure>
+                <video width="100%" controls class="center">
                 <source src="/resources/sim_hil_holodeck.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+                </video>
+                <figcaption>
+                    video credit: Ben Spin
+                </figcaption>
+            </figure>
+            
             
         </div>
+    </section>
+
+    <section id="eigenbot">
+        <h2>Project 2: [Project Name]</h2>
+        <p>[Brief description of the project]</p>
+        <img src="/api/placeholder/400/300" alt="Project 2 Image">
+        <p>
+            <a href="#">View Project Details</a> |
+            <a href="#">Watch Project Video</a>
+        </p>
     </section>
 
     <section id="ajam">
