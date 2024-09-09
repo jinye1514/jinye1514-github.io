@@ -78,6 +78,20 @@
         figure figcaption {
             text-align: center;
         }
+
+        .triangle {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-left: 5px;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid #333;
+            transition: transform 0.3s;
+        }
+        .triangle.up {
+            transform: rotate(180deg);
+        }
     </style>
 </head>
 <body>
@@ -104,7 +118,9 @@
         <h2>On-orbit Manipulation</h2>
         <h3>Northrop Grumman Corporation</h3>
         <p align="right">May 2024 - Current</p>
-        <button id="collapseButton" onclick="toggleCollapse()">▼ Project Background  </button> <br>
+        <button id="collapseButton" onclick="toggleCollapse()"> 
+            <span class="triangle" id="triangleIcon"> </span> Project Background  
+        </button> <br>
         <div id="collapseContent" style="display:none;">
             <p>
                 Every year, hundreds to thousands of satellites are launched into space. However, once these satellites are launched, 
@@ -126,7 +142,7 @@
             <figure>
                 <img src="/resources/insertion_simplified.png" alt="Simplified depiction of insertion" width=90% class="center">
                 <figcaption>
-                    Note: A simplified depiction of the insertion process. The MEP body is not shown.
+                   A simplified depiction of the insertion process. The MEP body is not shown.
                 </figcaption>
             </figure>
 
@@ -202,13 +218,53 @@
     </section>
 
     <section id="eigenbot">
-        <h2>Project 2: [Project Name]</h2>
-        <p>[Brief description of the project]</p>
-        <img src="/api/placeholder/400/300" alt="Project 2 Image">
+        <h2>EigenBot</h2>
+        <p align="right">Sept 2023 - Current</p>
+        <div id="contributions">Project Background</div>
+        <figure>
+            <img src="/resources/eigenbot/eigenbot.png" alt="EigenBot" width=90% class="center">
+            <figcaption>
+                source: CMU Biorobotics Lab
+            </figcaption>
+        </figure>
         <p>
-            <a href="#">View Project Details</a> |
-            <a href="#">Watch Project Video</a>
+            The EigenBot is a modular hexapod using a novel bio-inspired distributed neural control architecture. In centralized control schemes,
+            which a central computer is responsible for all processes such as receiving user input, receiving sensor feedback, computing proceeding actions, etc. 
+            Instead, the EigenBot uses a distributed control architecture, where each leg of the robot is controlled by a separate neural network, handling its own 
+            sensor feedback and computing its own actions, while also receiving decending commands from its upstream networks. This control architecture, modeled after
+            the nervous system of the <i>Carausius morosus</i> stick insect, allows for the robot to be able to adapt to changes in its environment, such as changing terrain,
+            and even leg amputations, while being less computationally expensive than centralized control schemes.
         </p>
+
+        <div id="contributions">personal contributions</div>
+        <h4>Compliance Control</h4>
+            I have formulated and implemented various compliance control algorithms for the EigenBot. The compliance control algorithms are modular to each joint, and are designed to allow the EigenBot to 
+            adapt to changes in its environment, such as uneven terrain. I tested the compliance control algorithms in simulation and on the real hardware, and have demonstrated enhanced locomotion performance
+            on uneven terrain.
+
+            <figure>
+                <video width="90%" controls class="center">
+                    <source src="/resources/eigenbot/compliance_sim.mp4" type="video/mp4">
+                </video>
+                <figcaption>
+                    Simulation of the EigenBot using compliance control to traverse uneven terrain.
+                </figcaption>
+            </figure>
+
+            <figure>
+                <video width="90%" controls class="center">
+                    <source src="/resources/eigenbot/compliance_hw.mp4" type="video/mp4">
+                </video>
+                <figcaption>
+                    Single leg experiment of the EigenBot using compliance control to traverse uneven terrain.
+                </figcaption>
+            </figure>
+        <p>
+
+        </p>
+
+
+            
     </section>
 
     <section id="ajam">
@@ -225,6 +281,9 @@
     <script>
         function toggleCollapse() {
             var content = document.getElementById("collapseContent");
+            var triangle = document.getElementById("triangleIcon");
+            content.classList.toggle("show");
+            triangle.classList.toggle("up");
             if (content.style.display === "none") {
                 content.style.display = "block";
             } else {
@@ -234,11 +293,11 @@
     </script>
 
     <style>
-        #collapseButton, #contributions {
+        #collapseButton {
             background-color: #ffffff;
             color: #333;
             border: 0px;
-            padding: 0.5rem 1rem;
+            padding: 0.1rem 0rem;
             font-family: "Courier", monospace;
             font-size: 1.1rem;    
             font-weight: bolder;
@@ -246,13 +305,27 @@
             text-transform: uppercase;
             margin-top: 1rem;
             display: inline-block;
-            text-align: center; /* Ensures text is centered */
-            line-height: 1rem;  /* Matches the height of the text */
-            /* width: 200px; */
+            text-align: center;
+            line-height: 1rem;
+        }
+
+        #contributions {
+            background-color: #ffffff;
+            color: #333;
+            border: 0px;
+            padding: 0.1rem 0rem;
+            font-family: "Courier", monospace;
+            font-size: 1.1rem;    
+            font-weight: bolder;
+            text-transform: uppercase;
+            margin-top: 1rem;
+            display: inline-block;
+            text-align: center;
+            line-height: 1rem;
         }
 
         #collapseButton:hover {
-            background-color: #e9e9e9;
+            background-color: #f7f7f7;
         }
 
         /* #nonClickableBox {

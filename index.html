@@ -56,7 +56,71 @@
         li:before {
             content: "- ";
         }
+
+        #collapseButton {
+            background-color: #ffffff;
+            color: #333;
+            border: 0px;
+            padding: 0.1rem 0rem;
+            font-family: "Courier", monospace;
+            font-size: 1.1rem;    
+            font-weight: bolder;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin-top: 1rem;
+            display: inline-block;
+            text-align: center;
+            line-height: 1rem;
+        }
+
+        #collapseButton:hover {
+            background-color: #f7f7f7;
+        }
+
+        .triangle {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-left: 5px;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid #333;
+            transition: transform 0.3s;
+        }
+        .triangle.up {
+            transform: rotate(180deg);
+        }
+
+        .column {
+            float: left;
+            width: 45%;
+            padding: 2%;
+        }
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        figure figcaption {
+            text-align: center;
+        }
     </style>
+
+    <script>
+        function toggleCollapse() {
+            var content = document.getElementById("collapseContent");
+            var triangle = document.getElementById("triangleIcon");
+            content.classList.toggle("show");
+            triangle.classList.toggle("up");
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -78,10 +142,31 @@
             legged robot and high-DOF robotic arms in simulation and on real hardware. I am currently looking for internship or full time opportunities in robotics
             starting in Summer 2025. Please feel free to reach out to me at: <a href="mailto: yej2@andrew.cmu.edu">yej2@andrew.cmu.edu</a>
         </p>
-        <button id="collapseButton" onclick="toggleCollapse()">▼ Personal Interests  </button> <br>
+        <button id="collapseButton" onclick="toggleCollapse()"> 
+            <span class="triangle" id="triangleIcon"> </span> Personal Interests  
+        </button> <br>
         <div id="collapseContent" style="display: none;">
-            <h3>Personal Interests</h3>
-            <p>Outside of robotics, I enjoy hiking, playing the guitar, and reading science fiction novels. I'm also a big fan of the Pittsburgh Steelers and the Pittsburgh Penguins.</p>
+            <p>Outside of robotics, I enjoy working out, climbing, skiing, hiking, and other outdoor activities.</p>
+            <div class="row">      
+                <div class="column">
+                    <img src="resources/personal/gog.JPG" alt="Climbing" style="width:100%">
+                    <p align="center">Garden of the Gods, CO</p>
+                </div>
+                <div class="column">
+                    <img src="resources/personal/joes.JPG" alt="Skiing" style="width:100%">
+                    <p align="center">Joe's Valley, UT</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <img src="resources/personal/skiing.JPG" alt="Skiing" style="width:100%">
+                    <p align="center">Arapaho National Forest, CO</p>
+                </div>
+                <div class="column">
+                    <img src="resources/personal/ice2.JPG" alt="Ice Climbing" style="width:100%">
+                    <p align="center">Clear Creek Canyon, CO</p>
+                </div>
+            </div>
     </section>
 
     <section id="cv">
