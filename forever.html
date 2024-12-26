@@ -42,9 +42,16 @@
       padding: 40px 20px;
       border-bottom: 1px solid #f0f0f0;
 
-      opacity: 0;                  /* Start invisible */
-      transform: translateY(20px); /* Slight slide-up effect */
+      /* Start hidden for all but the first section */
+      opacity: 0;
+      transform: translateY(20px);
       transition: opacity 1s ease, transform 1s ease;
+    }
+
+    /* Show the first section by default */
+    section:first-of-type {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* Remove border on last section */
@@ -66,7 +73,7 @@
       text-indent: 1em;
     }
 
-    /* Show sections when scrolled into view */
+    /* Class that makes a hidden section visible */
     section.show {
       opacity: 1;
       transform: translateY(0);
@@ -75,8 +82,8 @@
 </head>
 <body>
 
-  <!-- Section 1 -->
-  <section>
+  <!-- Section 1 (visible by default) -->
+  <section class="show">
     <h2>亲爱的 Seri，</h2>
     <p>首先我要祝你圣诞快乐！</p>
     <h2>夏</h2>
@@ -118,13 +125,14 @@
   </section>
 
   <script>
-    // Fade-in each section as it comes into view
-    const sections = document.querySelectorAll('section');
-    
+    // Fade-in each hidden section as it comes into view
+    const sections = document.querySelectorAll('section:not(:first-of-type)'); 
+    // The first section is already visible, so exclude it from the reveal logic
+
     function revealSections() {
       sections.forEach(section => {
         const rect = section.getBoundingClientRect();
-        const revealOffset = 100; // how far from bottom of screen before fade-in
+        const revealOffset = 100; // how far from the bottom of the screen before fade-in
         if (rect.top < window.innerHeight - revealOffset) {
           section.classList.add('show');
         }
